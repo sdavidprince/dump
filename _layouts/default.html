@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{% include head.html %}
+
+	<body
+		{% if page.layout == "default" %}
+			class="{{page.bodyClass}} h-feed"
+			{% else %}
+			class="{{page.layout}}-content"
+		{% endif %}
+	>
+		<div class="wrapper">
+			{% include header.html %}
+			{% if page.url == '/' %}
+			{% include hcard.html %}
+			{% endif %}
+			<main class="content">
+					{{ content }}
+			</main>
+			<aside class="sidebar">
+			</aside>
+			<footer class="colophon" role="contentinfo">
+				<p>
+					Built with <a href="https://github.com/miklb/jekyll-indieweb">Jekyll</a> on <a href="https://indiewebcamp.com">IndieWeb principles</a>
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>
