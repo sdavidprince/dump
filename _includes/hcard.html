@@ -1,0 +1,16 @@
+	<section class="usercard-wrapper">
+		<div class="row">
+			<div class="col">
+				<div class="usercard">
+					<div class="usercard-avatar">
+						<img class="usercard-img u-photo" alt="{{site.author}}" src="{{ site.author_img }}">
+					</div>
+					<div class="usercard-body">
+						<h2 class="title">Welcome to the website of <span class="p-name">{{ site.author }}</span></h2>
+						<p class="subtitle">{{ site.bio }}</p>
+						{% include icons.html %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
