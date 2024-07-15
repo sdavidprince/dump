@@ -1,0 +1,231 @@
+/* Inspiration https://responsivemart.com/ui_design/css-user-profile-card/ */
+
+.usercard-wrapper {
+    margin: 5em auto;
+    max-width: 1100px;
+}
+
+.usercard-wrapper .row {
+    display: flex;
+    flex-direction: column;
+}
+
+.usercard-wrapper .row .col {
+    flex-grow: 1;
+}
+.usercard {
+    background: var(--gray);
+    display: flex;
+    flex-basis: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.profiles {
+    display: flex;
+    list-style-type: none;
+	flex-flow: row wrap;
+	justify-content: center;
+	margin: 1.5em 0;
+}
+
+.profile svg {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    font-size: 3em;
+    cursor: pointer;
+    opacity: .9;
+}
+
+.profile .icon {
+    fill: var(--light);
+}
+
+.usercard-avatar {
+    position: relative;
+    width: 50%;
+    z-index: 49;
+    overflow: hidden; 
+}
+
+    .usercard-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .3s;
+}
+    
+ .usercard-body {
+    position: relative;
+    width: 60%;
+    padding: 3em 3em 2em;
+    background-color: var(--dark-gray);
+    color: var(--light);
+    text-align: center;
+}
+
+    .usercard .title {
+    color: var(--very-light-gray);
+    font-size: 2.5rem;
+    margin-bottom: .4em;
+      
+}
+
+  .usercard:hover .usercard-img {
+    transform: scale(1.1) rotate(3deg);
+}
+
+@media (max-width: 550px) {
+    .usercard {
+        flex-direction: column;
+    }
+
+
+  .usercard-avatar {
+      width: 100%;
+  }
+
+  .usercard-body {
+      width: 100%;
+  };
+}
+
+@media (min-width: 550px) {
+    .usercard .usercard-avatar:after {
+        content: '';
+        position: absolute;
+        right: -16%;
+        top: 0;
+        transform: skewx(-10deg);
+        height: 100%;
+        width: 20%;
+        min-width: 90px;
+        background: var(--dark-gray);
+  }
+}
+
+/* ripped from Rachel Andrews https://gridbyexample.com/patterns/media-object/ */
+
+
+
+.media {
+    margin-bottom: 2em;
+    padding: 10px;
+  }
+  
+  .media > .media-title { grid-area: media-title; }
+  .media > .img { grid-area: img; }
+  .media > .media-content { grid-area: bd; }
+  .media > .media-footer { grid-area: ft; }
+  
+  .media {
+    background: var(--gray);
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-areas:
+      "media-title"
+      "img"
+      "bd"
+      "ft";
+  }
+  
+  
+  @media (min-width: 600px) {
+  
+    /* clearfix*/
+    .media:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  
+    .media > .media {
+      margin-left: 160px;
+      clear: both;
+    }
+  
+    .media .img {
+      float: left;
+      margin: 0 10px 0 0;
+      width: 150px;
+    }
+    
+    .media .media-footer {
+      background-color: var(--gray);
+      padding: 10px;
+    }
+
+    .media-footer .profiles {
+      padding: 0;
+      margin: 0;
+    }
+  
+    .media.media-flip .img {
+      float: right;
+      margin: 0 0 0 10px;
+    }
+  
+    .media > * {
+      margin: 0 0 0 160px;
+    }
+  
+    .media.media-flip > * {
+      margin: 0 160px 0 0;
+    }
+  
+    @supports(display: grid ) {
+      /* override */
+      .media > *,
+      .media.media-flip > * {
+        margin: 0;
+      }
+      .media .img,
+      .media.media-flip .img {
+        width: auto;
+        margin: 0;
+      }
+      .media:after {
+        content: none;
+      }
+  
+      .media {
+        display: grid;
+        grid-column-gap: 20px;
+        grid-template-columns: 150px 3fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+          "img media-title"
+          "img bd"
+          "ft ft";
+      }
+  
+      .media.media-flip {
+        grid-template-columns: 3fr 150px ;
+        grid-template-areas:
+          "media-title img"
+          "bd img"
+          "ft ft";
+      }
+  
+      .media.img-flexie {
+        grid-template-columns: minmax(150px, 1fr) 3fr;
+      }
+  
+      .media.media-flip.img-flexie {
+        grid-template-columns: 3fr minmax(150px, 1fr);
+      }
+  
+      /* nested */
+      .media > .media {
+        grid-column: 2 / -1 ;
+        margin: 0; /* override */
+        margin-top: 1em;
+      }
+    }
+  
+  
+  }
